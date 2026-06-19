@@ -355,10 +355,70 @@ section{
 .stat-label{font-size:13px;color:var(--text-dim);letter-spacing:1px;}
 
 .about-visual{
-  position:relative;height:400px;
-  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
 }
-.neural-svg{width:100%;height:100%;}
+/* TERMINAL CODE MOCKUP */
+.code-mockup {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(5, 10, 25, 0.55);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.05);
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.terminal-header {
+  background: rgba(3, 6, 16, 0.85);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 6px;
+  margin-right: 16px;
+}
+
+.terminal-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.btn-red { background: #ff5f56; }
+.btn-yellow { background: #ffbd2e; }
+.btn-green { background: #27c93f; }
+
+.terminal-title {
+  color: var(--text-dim);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.terminal-body {
+  padding: 18px 24px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #e8f4ff;
+  text-align: left;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.code-keyword { color: #ff79c6; }
+.code-import { color: #8be9fd; }
+.code-string { color: #f1fa8c; }
+.code-comment { color: #6272a4; }
+.code-output { color: var(--neon-cyan); }
 
 /* SKILLS */
 .skills-grid{
@@ -775,15 +835,27 @@ body::after{
       </div>
     </div>
     <div class="about-visual">
-      <svg class="neural-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="ng1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#030610" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <g id="neural-nodes"></g>
-      </svg>
+      <div class="code-mockup">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <div class="terminal-btn btn-red"></div>
+            <div class="terminal-btn btn-yellow"></div>
+            <div class="terminal-btn btn-green"></div>
+          </div>
+          <div class="terminal-title">rag_pipeline.py</div>
+        </div>
+        <div class="terminal-body">
+          <span class="code-comment"># Initializing context-aware RAG engine</span><br/>
+          <span class="code-keyword">from</span> anjani_ai <span class="code-keyword">import</span> RAGEngine, LLM<br/><br/>
+          llm = LLM.load(<span class="code-string">"gemini-pro"</span>)<br/>
+          agent = RAGEngine(llm=llm, doc_path=<span class="code-string">"./kb"</span>)<br/><br/>
+          <span class="code-comment"># Querying database</span><br/>
+          response = agent.query(<span class="code-string">"Build premium waves grid"</span>)<br/>
+          print(response)<br/>
+          <span class="code-comment"># Output:</span><br/>
+          <span class="code-output">&gt;&gt; Background wave system initialized (60 FPS)</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1283,36 +1355,7 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.05,rootMargin:'0px 0px -50px 0px'});
 revealEls.forEach(el=>obs.observe(el));
 
-// ─── NEURAL NET SVG ───────────────────────────────
-(function(){
-  const svg=document.getElementById('neural-nodes');
-  if(!svg)return;
-  const nodes=[];
-  const ns='http://www.w3.org/2000/svg';
-  for(let i=0;i<16;i++){
-    const x=40+Math.random()*320,y=40+Math.random()*320;
-    nodes.push({x,y});
-    const c=document.createElementNS(ns,'circle');
-    c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',4);
-    c.setAttribute('fill','#00d4ff');c.setAttribute('opacity','0.7');
-    c.style.animation=`pulse ${1.5+Math.random()}s ease-in-out infinite`;
-    svg.appendChild(c);
-  }
-  nodes.forEach((a,i)=>{
-    nodes.forEach((b,j)=>{
-      if(i>=j)return;
-      const d=Math.hypot(a.x-b.x,a.y-b.y);
-      if(d<120){
-        const l=document.createElementNS(ns,'line');
-        l.setAttribute('x1',a.x);l.setAttribute('y1',a.y);
-        l.setAttribute('x2',b.x);l.setAttribute('y2',b.y);
-        l.setAttribute('stroke','#00d4ff');l.setAttribute('stroke-width','0.5');
-        l.setAttribute('opacity','0.2');
-        svg.appendChild(l);
-      }
-    });
-  });
-})();
+// Neural nodes SVG animation removed for cleaner visual experience
 
 // Project banners now use real images (assets/rag.jpg, fitness.jpg, aircanvas.jpg)
 

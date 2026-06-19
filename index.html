@@ -361,64 +361,7 @@ section{
   justify-content:center;
   width:100%;
 }
-/* TERMINAL CODE MOCKUP */
-.code-mockup {
-  width: 100%;
-  max-width: 480px;
-  background: rgba(5, 10, 25, 0.55);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  box-shadow: 0 20px 50px rgba(0, 212, 255, 0.05);
-  font-family: 'Share Tech Mono', monospace;
-  overflow: hidden;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-}
 
-.terminal-header {
-  background: rgba(3, 6, 16, 0.85);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-}
-
-.terminal-buttons {
-  display: flex;
-  gap: 6px;
-  margin-right: 16px;
-}
-
-.terminal-btn {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.btn-red { background: #ff5f56; }
-.btn-yellow { background: #ffbd2e; }
-.btn-green { background: #27c93f; }
-
-.terminal-title {
-  color: var(--text-dim);
-  font-size: 11px;
-  letter-spacing: 1px;
-}
-
-.terminal-body {
-  padding: 18px 24px;
-  font-size: 13.5px;
-  line-height: 1.75;
-  color: #e8f4ff;
-  text-align: left;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.code-keyword { color: #ff79c6; }
-.code-import { color: #8be9fd; }
-.code-string { color: #f1fa8c; }
-.code-comment { color: #6272a4; }
-.code-output { color: var(--neon-cyan); }
 
 /* SKILLS */
 .skills-grid{
@@ -834,29 +777,7 @@ body::after{
         </div>
       </div>
     </div>
-    <div class="about-visual">
-      <div class="code-mockup">
-        <div class="terminal-header">
-          <div class="terminal-buttons">
-            <div class="terminal-btn btn-red"></div>
-            <div class="terminal-btn btn-yellow"></div>
-            <div class="terminal-btn btn-green"></div>
-          </div>
-          <div class="terminal-title">rag_pipeline.py</div>
-        </div>
-        <div class="terminal-body">
-          <span class="code-comment"># Initializing context-aware RAG engine</span><br/>
-          <span class="code-keyword">from</span> anjani_ai <span class="code-keyword">import</span> RAGEngine, LLM<br/><br/>
-          llm = LLM.load(<span class="code-string">"gemini-pro"</span>)<br/>
-          agent = RAGEngine(llm=llm, doc_path=<span class="code-string">"./kb"</span>)<br/><br/>
-          <span class="code-comment"># Querying database</span><br/>
-          response = agent.query(<span class="code-string">"Build premium waves grid"</span>)<br/>
-          print(response)<br/>
-          <span class="code-comment"># Output:</span><br/>
-          <span class="code-output">&gt;&gt; Background wave system initialized (60 FPS)</span>
-        </div>
-      </div>
-    </div>
+    <div class="about-visual"></div>
   </div>
 </section>
 
